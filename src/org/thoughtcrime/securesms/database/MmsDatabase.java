@@ -1356,10 +1356,6 @@ public class MmsDatabase extends MessagingDatabase {
       int       readReceiptCount     = cursor.getInt(cursor.getColumnIndexOrThrow(MmsDatabase.READ_RECEIPT_COUNT));
       int       subscriptionId       = cursor.getInt(cursor.getColumnIndexOrThrow(MmsDatabase.SUBSCRIPTION_ID));
 
-      if (!TextSecurePreferences.isReadReceiptsEnabled(context)) {
-        readReceiptCount = 0;
-      }
-
       byte[]contentLocationBytes = null;
       byte[]transactionIdBytes   = null;
 
@@ -1397,10 +1393,6 @@ public class MmsDatabase extends MessagingDatabase {
       long               expiresIn            = cursor.getLong(cursor.getColumnIndexOrThrow(MmsDatabase.EXPIRES_IN));
       long               expireStarted        = cursor.getLong(cursor.getColumnIndexOrThrow(MmsDatabase.EXPIRE_STARTED));
       boolean            unidentified         = cursor.getInt(cursor.getColumnIndexOrThrow(MmsDatabase.UNIDENTIFIED)) == 1;
-
-      if (!TextSecurePreferences.isReadReceiptsEnabled(context)) {
-        readReceiptCount = 0;
-      }
 
       Recipient                 recipient          = getRecipientFor(address);
       List<IdentityKeyMismatch> mismatches         = getMismatchedIdentities(mismatchDocument);

@@ -963,13 +963,11 @@ public class PushDecryptJob extends ContextJob {
   private void handleReadReceipt(@NonNull SignalServiceContent content,
                                  @NonNull SignalServiceReceiptMessage message)
   {
-    if (TextSecurePreferences.isReadReceiptsEnabled(context)) {
-      for (long timestamp : message.getTimestamps()) {
-        Log.i(TAG, String.format("Received encrypted read receipt: (XXXXX, %d)", timestamp));
+    for (long timestamp : message.getTimestamps()) {
+      Log.i(TAG, String.format("Received encrypted read receipt: (XXXXX, %d)", timestamp));
 
-        DatabaseFactory.getMmsSmsDatabase(context)
-                       .incrementReadReceiptCount(new SyncMessageId(Address.fromExternal(context, content.getSender()), timestamp), content.getTimestamp());
-      }
+      DatabaseFactory.getMmsSmsDatabase(context)
+                     .incrementReadReceiptCount(new SyncMessageId(Address.fromExternal(context, content.getSender()), timestamp), content.getTimestamp());
     }
   }
 
