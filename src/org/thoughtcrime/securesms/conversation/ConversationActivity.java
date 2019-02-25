@@ -359,9 +359,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
               });
             }
 
-            if (TextSecurePreferences.isTypingIndicatorsEnabled(ConversationActivity.this)) {
-              composeText.addTextChangedListener(typingTextWatcher);
-            }
+            composeText.addTextChangedListener(typingTextWatcher);
+
             composeText.setSelection(composeText.length(), composeText.length());
           }
         });

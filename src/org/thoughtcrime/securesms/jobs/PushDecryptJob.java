@@ -976,10 +976,6 @@ public class PushDecryptJob extends ContextJob {
   private void handleTypingMessage(@NonNull SignalServiceContent content,
                                    @NonNull SignalServiceTypingMessage typingMessage)
   {
-    if (!TextSecurePreferences.isTypingIndicatorsEnabled(context)) {
-      return;
-    }
-
     Recipient author = Recipient.from(context, Address.fromExternal(context, content.getSender()), false);
 
     long threadId;

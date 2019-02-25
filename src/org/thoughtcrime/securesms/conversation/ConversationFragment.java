@@ -276,10 +276,6 @@ public class ConversationFragment extends Fragment
   }
 
   private void initializeTypingObserver() {
-    if (!TextSecurePreferences.isTypingIndicatorsEnabled(requireContext())) {
-      return;
-    }
-
     ApplicationContext.getInstance(requireContext()).getTypingStatusRepository().getTypists(threadId).observe(this, typingState ->  {
       List<Recipient> recipients;
       boolean         replacedByIncomingMessage;
